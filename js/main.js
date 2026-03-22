@@ -87,3 +87,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// 语言切换功能
+document.getElementById('languageSelect').addEventListener('change', function(e) {
+  const selectedLang = e.target.value;
+
+  // 遍历所有带有多语言数据属性的元素
+  document.querySelectorAll('[data-zh]').forEach(element => {
+    element.textContent = element.getAttribute(`data-${selectedLang}`);
+  });
+
+  // 可以在这里添加保存用户语言偏好的逻辑
+  localStorage.setItem('preferredLanguage', selectedLang);
+});
+
+// 页面加载时检查用户偏好语言
+window.addEventListener('DOMContentLoaded', function() {
+  const savedLang = localStorage.getItem('preferredLanguage');
+  if (savedLang) {
+    document.getElementById('languageSelect').value = savedLang;
+    // 触发一次change事件以应用保存的语言
+    document.getElementById('languageSelect').dispatchEvent(new Event('change'));
+  }
+});
