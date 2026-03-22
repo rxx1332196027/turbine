@@ -1,13 +1,355 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shanghai Turbine Service Co., Ltd.</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上海涡轮服务 - 专业燃气轮机服务提供商</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<div id="root"></div>
-<script type="module" src="/src/main.jsx"></script>
+<!-- 导航栏 -->
+<header>
+    <nav>
+<!--        <div class="logo">-->
+<!--            <img src="images/logo.png" alt="上海特宾斯燃气轮机技术有限公司">-->
+<!--        </div>-->
+        <div class="logo-container">
+            <img src="images/logo.png" alt="公司logo" class="logo-img">
+            <!-- 添加公司名称容器 -->
+            <div class="company-name">
+                <div class="chinese-name">上海特宾斯燃气轮机技术有限公司</div>
+                <div class="english-name">Shanghai Turbine Service Co., Ltd.</div>
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">首页</a></li>
+            <li><a href="#domains">涉足领域</a></li>
+            <li><a href="#business">从事业务</a></li>
+            <li><a href="#contact">联系我们</a></li>
+            <li class="language-selector">
+                <select id="language-select">
+                    <option value="zh">中文</option>
+                    <option value="en">English</option>
+                    <option value="ru">Русский</option>
+                </select>
+            </li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+</header>
+
+<!-- 英雄区域 -->
+<section id="home" class="hero">
+    <div class="hero-content">
+        <h1>始于强劲交付，忠于长久守护</h1>
+        <p>Your Full-Range Turbine Partner</p>
+        <h2>Ваш универсальный партнер в области турбин</h2>
+    </div>
+</section>
+
+<!-- 涉足领域 -->
+<section id="domains" class="domains">
+    <div class="container">
+        <h2>涉足领域</h2>
+        <div class="domain-cards">
+            <div class="domain-card">
+                <img src="images/domain/power.png" alt="能源电力">
+                <h3>能源电力</h3>
+                <p>为电力行业提供高效可靠的燃气轮机解决方案</p>
+            </div>
+            <div class="domain-card">
+                <img src="images/domain/industrial.jpg" alt="工业制造">
+                <h3>工业制造</h3>
+                <p>服务于各类工业制造企业的动力系统需求</p>
+            </div>
+            <div class="domain-card">
+                <img src="images/domain/marine.png" alt="船舶海洋">
+                <h3>船舶海洋</h3>
+                <p>为船舶和海洋工程提供动力系统支持</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 从事业务 -->
+<section id="business" class="business">
+    <div class="container">
+        <h2>从事业务</h2>
+
+        <!-- 原材料业务 -->
+        <div class="business-section">
+            <h3>原材料</h3>
+            <div class="business-content">
+                <div class="business-text">
+                    <p>我们提供高质量的燃气轮机生产所需原材料，确保产品质量和性能。所有原材料均经过严格的质量检测，符合国际标准。</p>
+                    <ul>
+                        <li>等轴晶铸造高温合金</li>
+                        <li>定向凝固高温合金</li>
+                        <li>单晶高温合金</li>
+                    </ul>
+                </div>
+                <div class="business-gallery">
+                    <div class="gallery-container">
+                        <img src="images/materials/material1.jpg" alt="高温合金材料">
+                    </div>
+                    <button class="gallery-prev">←</button>
+                    <button class="gallery-next">→</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 燃机零部件制造 -->
+        <div class="business-section">
+            <h3>燃机零部件制造</h3>
+            <div class="business-content">
+                <div class="business-text">
+                    <p>我们拥有先进的制造设备和技术，能够生产各种高精度燃气轮机零部件，满足不同型号燃气轮机的需求。</p>
+                    <ul>
+                        <li>涡轮叶片</li>
+                        <li>燃烧室</li>
+                        <li>转子组件</li>
+                        <li>轴承系统</li>
+                    </ul>
+                </div>
+                <div class="business-gallery">
+                    <div class="gallery-container">
+                        <img src="images/parts/part1.jpg" alt="涡轮叶片">
+                        <img src="images/parts/part2.jpg" alt="燃烧室">
+                        <img src="images/parts/part3.jpg" alt="转子组件">
+                        <img src="images/parts/part4.jpg" alt="轴承系统">
+                        <img src="images/parts/part5.jpg" alt="轴承系统">
+                    </div>
+                    <button class="gallery-prev">←</button>
+                    <button class="gallery-next">→</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 燃气轮机整机新建 -->
+        <div class="business-section">
+            <h3>燃气轮机整机新建</h3>
+            <div class="business-content">
+                <div class="business-text">
+                    <p>我们提供从设计、制造到安装调试的全套燃气轮机整机解决方案，为客户打造高效、可靠的动力系统。</p>
+                    <ul>
+                        <li>小型燃气轮机</li>
+                        <li>中型燃气轮机</li>
+                        <li>大型燃气轮机</li>
+                        <li>联合循环系统</li>
+                    </ul>
+                </div>
+                <div class="business-gallery">
+                    <div class="gallery-container">
+                        <img src="images/turbines/turbine1.png" alt="小型燃气轮机">
+                        <img src="images/turbines/turbine2.png" alt="中型燃气轮机">
+                        <img src="images/turbines/turbine3.png" alt="大型燃气轮机">
+                        <img src="images/turbines/turbine4.png" alt="联合循环系统">
+                        <img src="images/turbines/turbine5.png" alt="联合循环系统">
+                        <img src="images/turbines/turbine6.png" alt="联合循环系统">
+                        <img src="images/turbines/turbine7.png" alt="联合循环系统">
+                        <img src="images/turbines/turbine8.png" alt="联合循环系统">
+                        <img src="images/turbines/turbine9.png" alt="联合循环系统">
+                    </div>
+                    <button class="gallery-prev">←</button>
+                    <button class="gallery-next">→</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 燃气轮机维修 -->
+        <div class="business-section">
+            <h3>燃气轮机维修</h3>
+            <div class="business-content">
+                <div class="business-text">
+                    <p>我们拥有专业的维修团队和先进的检测设备，提供燃气轮机的定期维护、故障诊断和大修服务，确保设备长期稳定运行。</p>
+                    <ul>
+                        <li>定期维护保养</li>
+                        <li>故障诊断与修复</li>
+                        <li>性能优化</li>
+                        <li>升级改造</li>
+                    </ul>
+                </div>
+                <div class="business-gallery">
+                    <div class="gallery-container">
+                        <img src="images/maintenance/maintenance1.png" alt="定期维护保养">
+                        <img src="images/maintenance/maintenance2.png" alt="故障诊断与修复">
+                        <img src="images/maintenance/maintenance3.png" alt="性能优化">
+                    </div>
+                    <button class="gallery-prev">←</button>
+                    <button class="gallery-next">→</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 联系方式 -->
+<section id="contact" class="contact">
+    <div class="container">
+        <h2>联系我们</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="icon location"></i>
+                    <div>
+                        <h3>联系人</h3>
+                        Cyrus Han
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="icon location"></i>
+                    <div>
+                        <h3>职位</h3>
+                        Business Development Director
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="icon phone"></i>
+                    <div>
+                        <h3>电话</h3>
+                        +86-18500040333
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="icon email"></i>
+                    <div>
+                        <h3>电子邮箱</h3>
+                        han@turbines.cc
+                    </div>
+                </div>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="icon location"></i>
+                    <div>
+                        <h3>联系人</h3>
+                        Fonsie Shi
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="icon location"></i>
+                    <div>
+                        <h3>职位</h3>
+                        Chief Executive Officer
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="icon phone"></i>
+                    <div>
+                        <h3>电话</h3>
+                        +86-18722628615
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="icon email"></i>
+                    <div>
+                        <h3>电子邮箱</h3>
+                        fonsie.shi@turbines.cc
+                    </div>
+                </div>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="icon location"></i>
+                    <div>
+                        <h3>联系人</h3>
+                        Russell Wang
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="icon location"></i>
+                    <div>
+                        <h3>职位</h3>
+                        Business Development
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="icon phone"></i>
+                    <div>
+                        <h3>电话</h3>
+                        +86-13821581217
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="icon email"></i>
+                    <div>
+                        <h3>电子邮箱</h3>
+                        russell.wang@turbines.cc
+                    </div>
+                </div>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="icon location"></i>
+                    <div>
+                        <h3>联系人</h3>
+                        Lily Yin
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="icon location"></i>
+                    <div>
+                        <h3>职位</h3>
+                        Chief Engineering Officer
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="icon phone"></i>
+                    <div>
+                        <h3>电话</h3>
+                        +86-18809863421
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="icon email"></i>
+                    <div>
+                        <h3>电子邮箱</h3>
+                        li.yin@turbines.cc
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 页脚 -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="上海特宾斯燃气轮机技术有限公司">
+                <div class="company-name">
+                    <div class="chinese-name">上海特宾斯燃气轮机技术有限公司</div>
+                    <div class="english-name">Shanghai Turbine Service Co., Ltd.</div>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>快速链接</h4>
+                <ul>                    <li><a href="#home">首页</a></li>
+                    <li><a href="#domains">涉足领域</a></li>
+                    <li><a href="#business">从事业务</a></li>
+                    <li><a href="#contact">联系方式</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Generic Service E-mail</h4>
+                <p>info@turbines.cc</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; Copyright © 2026 Shanghai Turbine Service Co., Ltd.
+
+                保留所有权利
+
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
 </body>
 </html>
