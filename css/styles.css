@@ -268,23 +268,27 @@ nav {
     margin-bottom: 2rem;
 }
 
+/* 核心修改：flex布局+自动换行+响应式列数 */
 .contact-content {
     display: flex;
-    grid-template-columns: 1fr 1fr;
+    flex-wrap: wrap; /* 关键：超出宽度自动换行 */
     gap: 2rem;
-     width: 100%;
-        max-width: 100%;
+    width: 100%;
+    max-width: 100%;
+    justify-content: center; /* 居中对齐，更美观 */
 }
 
+/* 联系人卡片自适应 */
 .contact-info {
     background: var(--white);
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-    width: 100%;
-    max-width: 100%;
+    /* 核心：最小宽度+弹性缩放，保证自适应 */
+    flex: 1;
+    min-width: 250px; /* 小屏幕最小宽度，避免挤变形 */
+    max-width: 350px; /* 大屏幕最大宽度，避免过宽 */
 }
-
 
 .contact-item {
     display: grid;
@@ -297,32 +301,44 @@ nav {
     font-size: 1.5rem;
 }
 
-.contact-form {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+/* 响应式断点优化（补充） */
+@media screen and (max-width: 1200px) {
+    .contact-info {
+        max-width: 300px; /* 大屏缩小一点 */
+    }
 }
 
-.form-group {
-    margin-bottom: 1rem;
+@media screen and (max-width: 992px) {
+    .contact-content {
+        gap: 1.5rem; /* 中等屏幕缩小间距 */
+    }
+    .contact-info {
+        min-width: 250px;
+        padding: 1.5rem; /* 缩小内边距 */
+    }
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
+@media screen and (max-width: 768px) {
+    .contact-info {
+        min-width: 100%; /* 手机端占满宽度 */
+        max-width: 100%;
+        padding: 1.2rem;
+    }
+    .contact-content {
+        gap: 1rem;
+    }
 }
 
-.form-group input, .form-group textarea {
-    width: 100%;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.form-group textarea {
-    height: 150px;
-    resize: vertical;
+@media screen and (max-width: 480px) {
+    .contact-item {
+        gap: 0.5rem; /* 超小屏缩小内部间距 */
+    }
+    .contact-info h3 {
+        font-size: 1rem; /* 缩小标题字体 */
+    }
+    .contact-info p {
+        font-size: 0.9rem; /* 缩小内容字体 */
+    }
 }
 
 
