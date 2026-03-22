@@ -67,7 +67,8 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
+    width:100%;
+    padding: 1rem 1rem;
 }
 
 .logo img {
@@ -120,7 +121,7 @@ nav {
 }
 
 .hero-content h1 {
-    font-size: 3rem;
+    font-size: 2rem;
     margin-bottom: 1rem;
     color: #591a76;
 }
@@ -132,14 +133,14 @@ nav {
 
 /* 涉足领域样式 */
 .domains {
-    padding: 5rem 0;
+    padding: 2rem 0;
     background: var(--light-bg);
 }
 
 .domains h2 {
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
+    font-size: 2rem;
+    margin-bottom: 2rem;
 }
 
 .domain-cards {
@@ -192,13 +193,12 @@ nav {
 
 .business h2 {
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
+    font-size: 2rem;
+    margin-bottom: 2rem;
 }
 
 .business-section {
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
+    margin-bottom: 1rem;
     border-bottom: 1px solid #eee;
 }
 
@@ -264,14 +264,16 @@ nav {
 
 .contact h2 {
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
+    font-size: 2rem;
+    margin-bottom: 2rem;
 }
 
 .contact-content {
     display: flex;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
+     width: 100%;
+        max-width: 100%;
 }
 
 .contact-info {
@@ -279,7 +281,10 @@ nav {
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 100%;
 }
+
 
 .contact-item {
     display: grid;

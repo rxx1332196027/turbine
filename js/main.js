@@ -1,11 +1,11 @@
-// 导航栏切换
 document.addEventListener('DOMContentLoaded', function() {
     const burger = document.querySelector('.burger');
     const nav = document.querySelector('.nav-links');
     const navLinks = document.querySelectorAll('.nav-links li');
 
-    burger.addEventListener('click', function() {
-        nav.classList.toggle('nav-active');
+    // 汉堡菜单切换
+    burger?.addEventListener('click', function() {
+        nav?.classList.toggle('nav-active');
 
         // 动画效果
         navLinks.forEach((link, index) => {
@@ -15,32 +15,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
             }
         });
-
-        // 汉堡菜单动画
         burger.classList.toggle('toggle');
     });
 
-    // 平滑滚动
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+
+    // 🔥 优化后的平滑滚动 - 终极版事件委托
+    document.addEventListener('click', function (e) {
+        // 1. 向上查找最近的a标签（兼容任意嵌套结构）
+        const anchor = e.target.closest('a');
+        // 2. 只处理锚点链接（href以#开头且不是空#）
+        if (anchor && anchor.getAttribute('href')?.startsWith('#') && anchor.getAttribute('href') !== '#') {
             e.preventDefault();
 
             // 关闭移动导航菜单
-            nav.classList.remove('nav-active');
-            burger.classList.remove('toggle');
-            navLinks.forEach(link => {
-                link.style.animation = '';
-            });
+            nav?.classList.remove('nav-active');
+            burger?.classList.remove('toggle');
+            navLinks.forEach(link => link.style.animation = '');
 
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
+            // 平滑滚动到目标位置
+            const targetId = anchor.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
     });
 
-    // 图片画廊功能
+    // 图片画廊功能（无修改）
     const galleries = document.querySelectorAll('.business-gallery');
-
     galleries.forEach(gallery => {
         const container = gallery.querySelector('.gallery-container');
         const prevBtn = gallery.querySelector('.gallery-prev');
@@ -52,61 +54,68 @@ document.addEventListener('DOMContentLoaded', function() {
             container.style.transform = `translateX(-${currentIndex * 100}%)`;
         }
 
-        prevBtn.addEventListener('click', () => {
+        prevBtn?.addEventListener('click', () => {
             currentIndex = (currentIndex - 1 + images.length) % images.length;
             updateGallery();
         });
-
-        nextBtn.addEventListener('click', () => {
+        nextBtn?.addEventListener('click', () => {
             currentIndex = (currentIndex + 1) % images.length;
             updateGallery();
         });
     });
 
-    // 表单提交
+    // 表单提交（无修改）
     const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+    contactForm?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('感谢您的留言，我们会尽快回复您！');
+        contactForm.reset();
+    });
 
-            // 这里可以添加表单验证和提交逻辑
-            alert('感谢您的留言，我们会尽快回复您！');
-            contactForm.reset();
-        });
-    }
-
-    // 滚动时导航栏样式变化
+    // 滚动时导航栏样式变化（无修改）
     window.addEventListener('scroll', function() {
         const header = document.querySelector('header');
-        if (window.scrollY > 50) {
+        if (header && window.scrollY > 50) {
             header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
             header.style.backdropFilter = 'blur(5px)';
-        } else {
+        } else if (header) {
             header.style.backgroundColor = 'var(--white)';
             header.style.backdropFilter = 'none';
         }
     });
-});
 
-// 语言切换功能
-document.getElementById('languageSelect').addEventListener('change', function(e) {
-  const selectedLang = e.target.value;
+    // 🔥 方案1：优化语言切换 - 只修改文本节点，不破坏DOM结构
+    function switchLanguage(lang) {
+        // 遍历所有多语言元素
+        document.querySelectorAll('[data-zh]').forEach(element => {
+            const langText = element.getAttribute(`data-${lang}`);
+            if (langText) {
+                // 关键修改：只替换第一个文本节点，保留子元素结构
+                if (element.firstChild && element.firstChild.nodeType === 3) {
+                    element.firstChild.textContent = langText;
+                } else {
+                    // 无文本节点时才设置textContent（兼容空元素）
+                    element.textContent = langText;
+                }
+            }
+        });
+        localStorage.setItem('preferredLanguage', lang);
+    }
 
-  // 遍历所有带有多语言数据属性的元素
-  document.querySelectorAll('[data-zh]').forEach(element => {
-    element.textContent = element.getAttribute(`data-${selectedLang}`);
-  });
 
-  // 可以在这里添加保存用户语言偏好的逻辑
-  localStorage.setItem('preferredLanguage', selectedLang);
-});
+    // 语言切换事件绑定
+    const languageSelect = document.getElementById('languageSelect');
+    if (languageSelect) {
+        languageSelect.addEventListener('change', function(e) {
+            switchLanguage(e.target.value);
+            bindMenuEvents();
+        });
 
-// 页面加载时检查用户偏好语言
-window.addEventListener('DOMContentLoaded', function() {
-  const savedLang = localStorage.getItem('preferredLanguage');
-  if (savedLang) {
-    document.getElementById('languageSelect').value = savedLang;
-    // 触发一次change事件以应用保存的语言
-    document.getElementById('languageSelect').dispatchEvent(new Event('change'));
-  }
+        // 恢复用户偏好语言
+        const savedLang = localStorage.getItem('preferredLanguage');
+        if (savedLang) {
+            languageSelect.value = savedLang;
+            switchLanguage(savedLang);
+        }
+    }
 });
