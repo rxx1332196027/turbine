@@ -15,6 +15,8 @@
     --white: #fff;
     --gray: #95a5a6;
     --dark-gray: #7f8c8d;
+    --border-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.05);
 }
 
 body {
@@ -256,9 +258,9 @@ nav {
     right: 0;
 }
 
-/* 联系方式样式 */
+/* 联系方式样式 - 重点优化部分 */
 .contact {
-    padding: 2rem 0;
+    padding: 4rem 0;
     background: var(--light-bg);
 }
 
@@ -268,79 +270,96 @@ nav {
     margin-bottom: 2rem;
 }
 
-/* 核心修改：flex布局+自动换行+响应式列数 */
 .contact-content {
     display: flex;
-    flex-wrap: wrap; /* 关键：超出宽度自动换行 */
+    flex-wrap: wrap;
     gap: 2rem;
     width: 100%;
     max-width: 100%;
-    justify-content: center; /* 居中对齐，更美观 */
+    justify-content: center;
 }
 
-/* 联系人卡片自适应 */
+/* 联系人卡片整体样式 */
 .contact-info {
     background: var(--white);
     padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-    /* 核心：最小宽度+弹性缩放，保证自适应 */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--shadow-color);
     flex: 1;
-    min-width: 250px; /* 小屏幕最小宽度，避免挤变形 */
-    max-width: 350px; /* 大屏幕最大宽度，避免过宽 */
+    min-width: 250px;
+    max-width: 350px;
+    /* 增加立体感 */
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* 卡片悬浮效果增强立体感 */
+.contact-info:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 联系人姓名样式 - 重点优化 */
+.contact-item:first-child {
+    /* 渐变分割线，增加层次感 */
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+}
+
+/* 立体感分割线效果 */
+.contact-item:first-child::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 10%;
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d1d5db, transparent);
+}
+
+.contact-name {
+    font-weight: 700;
+    color: var(--primary-color);
+    text-align: center;
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
+    padding: 0.5rem 0;
+    /* 增加文字立体感 */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* 联系信息项样式 */
 .contact-item {
-    display: grid;
-    margin-bottom: 1.5rem;
+    grid-template-columns: 30px 1fr;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    padding: 0.5rem 0;
 }
 
 .contact-item i {
-    margin-right: 1rem;
     color: var(--accent-color);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    justify-self: center;
 }
 
-/* 响应式断点优化（补充） */
-@media screen and (max-width: 1200px) {
-    .contact-info {
-        max-width: 300px; /* 大屏缩小一点 */
-    }
+.contact-item div {
+    padding-left: 0.5rem;
 }
 
-@media screen and (max-width: 992px) {
-    .contact-content {
-        gap: 1.5rem; /* 中等屏幕缩小间距 */
-    }
-    .contact-info {
-        min-width: 250px;
-        padding: 1.5rem; /* 缩小内边距 */
-    }
+.contact-item h3 {
+    font-size: 0.95rem;
+    color: var(--dark-gray);
+    margin-bottom: 0.3rem;
+    font-weight: 500;
 }
 
-@media screen and (max-width: 768px) {
-    .contact-info {
-        min-width: 100%; /* 手机端占满宽度 */
-        max-width: 100%;
-        padding: 1.2rem;
-    }
-    .contact-content {
-        gap: 1rem;
-    }
+.contact-item div > :last-child {
+    font-size: 1rem;
+    color: var(--text-color);
+    font-weight: 500;
 }
-
-@media screen and (max-width: 480px) {
-    .contact-item {
-        gap: 0.5rem; /* 超小屏缩小内部间距 */
-    }
-    .contact-info h3 {
-        font-size: 1rem; /* 缩小标题字体 */
-    }
-    .contact-info p {
-        font-size: 0.9rem; /* 缩小内容字体 */
-    }
-}
-
 
 /* 页脚样式 */
 footer {
@@ -420,6 +439,17 @@ footer {
 
     .business-content, .contact-content {
         grid-template-columns: 1fr;
+    }
+
+    /* 移动端联系人卡片优化 */
+    .contact-info {
+        min-width: 100%;
+        max-width: 100%;
+        padding: 1.5rem;
+    }
+
+    .contact-name {
+        font-size: 1.2rem;
     }
 }
 
